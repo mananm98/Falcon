@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["modules", "sections"],
+  "properties": {
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "directory", "purpose"],
+        "properties": {
+          "name": { "type": "string" },
+          "directory": { "type": "string" },
+          "purpose": { "type": "string" },
+          "key_files": { "type": "array", "items": { "type": "string" } },
+          "depends_on": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "pages"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "order": { "type": "integer" },
+          "description": { "type": "string" },
+          "pages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["slug", "title"],
+              "properties": {
+                "slug": { "type": "string" },
+                "title": { "type": "string" },
+                "source_files": { "type": "array", "items": { "type": "string" } },
+                "source_dirs": { "type": "array", "items": { "type": "string" } },
+                "summary": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "entry_points": { "type": "array", "items": { "type": "string" } },
+    "config_files": { "type": "array", "items": { "type": "string" } }
+  }
+}

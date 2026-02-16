@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["version", "repository", "sections", "pages", "source_index", "stats"],
+  "properties": {
+    "version": { "type": "string" },
+    "repository": {
+      "type": "object",
+      "properties": {
+        "owner": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string" },
+        "default_branch": { "type": "string" },
+        "commit_sha": { "type": "string" },
+        "languages": { "type": "object" },
+        "description": { "type": "string" }
+      }
+    },
+    "generated_at": { "type": "string" },
+    "falcon_version": { "type": "string" },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "order": { "type": "integer" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slug": { "type": "string" },
+          "title": { "type": "string" },
+          "section": { "type": "string" },
+          "order": { "type": "integer" },
+          "file_path": { "type": "string" },
+          "summary": { "type": "string" },
+          "source_files": { "type": "array", "items": { "type": "string" } },
+          "source_dirs": { "type": "array", "items": { "type": "string" } },
+          "key_exports": { "type": "array", "items": { "type": "string" } },
+          "module_type": { "type": "string" },
+          "depends_on": { "type": "array", "items": { "type": "string" } },
+          "depended_by": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "source_index": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    },
+    "graph": {
+      "type": "object",
+      "properties": {
+        "nodes": { "type": "array" },
+        "edges": { "type": "array" }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "total_pages": { "type": "integer" },
+        "total_source_files_covered": { "type": "integer" },
+        "total_source_files_in_repo": { "type": "integer" },
+        "coverage_percent": { "type": "number" }
+      }
+    }
+  }
+}
